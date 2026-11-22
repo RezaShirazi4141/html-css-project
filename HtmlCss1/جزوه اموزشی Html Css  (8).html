@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جزوه آموزشی HTML - گالری تصاویر و لینک‌های پرشی (Bookmarks)</title>
+    <style>
+      /* فعال کردن اسکرول نرم هنگام کلیک روی لینک‌های پرشی */
+      html {
+        scroll-behavior:smooth;
+      }
+
+      body {
+        font-family: Tahoma, "Vazirmatn", sans-serif;
+        line-height: 1.8;
+        max-width: 1000px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fcfcfc;
+        color: #333;
+      }
+
+      /* عنوان اصلی بدون نیاز به تگ قدیمی <font> */
+      h1.main-title {
+        color: #c0392b;
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      hr {
+        border: 0;
+        height: 2px;
+        background-color: #bdc3c7;
+        margin: 20px 0;
+      }
+
+      /* منوی ناوبری داخلی (Navigation) */
+      nav.gallery-nav {
+        background-color: #ecf0f1;
+        padding: 15px;
+        border-radius: 8px;
+        margin-bottom: 30px;
+      }
+
+      nav.gallery-nav ul {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 20px;
+        justify-content: center;
+      }
+
+      nav.gallery-nav a {
+        text-decoration: none;
+        color: #2980b9;
+        font-weight: bold;
+        padding: 6px 12px;
+        border-radius: 8px;
+        transition: background-color 0.4s;
+      }
+
+      nav.gallery-nav a:hover {
+        background-color: #3498db;
+        color: #fff;
+      }
+
+      .gallery-section {
+        margin-bottom: 50px;
+        padding-top: 20px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        /* «فاصله‌گذاری منصفانه / پخش کردن عناصر با حداکثر فاصله از هم» */
+        align-items: center;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+      }
+
+      .back-to-top {
+        font-size: 0.85rem;
+        color: #7f8c8d;
+        text-decoration: none;
+      }
+
+      .back-to-top:hover {
+        color: #e74c3c;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        /* «ستون‌ها رو طوری بچین که خودشون خودکار جا بشن؛ حداقل عرض هر ستون ۲۸۰ پیکسل باشه و اگه فضای اضافی موند، ستون‌ها به نسبت مساوی (۱ سهم از کل) بزرگ بشن.» */
+        gap: 20px;
+        /* «ایجاد فاصله (گاتر) ۲۰ پیکسلی بین سطرها و ستون‌ها» */
+      }
+
+      /* المان معنایی figure برای کارت‌های تصویر */
+      figure.image-card {
+        margin: 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        overflow: hidden;
+        /* «هر محتوا، تصویر یا کناری که از کادر/مرز این عنصر بزند بیرون، مخفی (قیچی) کن!» */
+        background-color: #fff;
+        text-align: center;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+      }
+
+      figure.image-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      figure.image-card img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover; /* حفظ تناسب تصویر بدون دفرمه شدن */
+        display: block;
+      }
+
+      figcaption {
+        padding: 12px;
+        font-size: 0.95rem;
+        color: #555;
+        background-color: #fafafa;
+      }
+
+      .description-box {
+        background: #fff;
+        padding: 15px;
+        border-left: 4px solid #3498db;
+        border-radius: 4px;
+        margin: 30px 0;
+        color: #666;
+      }
+    </style>
+  </head>
+
+  <body id="top">
+    <!-- نقطه مقصد برای بازگشت به بالای صفحه -->
+
+    <!-- عنوان اصلی صفحه -->
+    <h1 class="main-title">گالری تصاویر</h1>
+    <hr />
+
+    <!-- =================================================================
+         منوی لینک‌های پرشی (Bookmarks / Anchor Links)
+         تگ معنایی <nav> برای بلوک‌های ناوبری استفاده می‌شود.
+         علامت # یعنی در همین صفحه به دنبال تگی با این id بگرد.
+         ================================================================= -->
+    <nav class="gallery-nav" aria-label="منوی دسته‌بندی تصاویر">
+      <ul>
+        <li><a href="#flowers">گالری گل‌ها</a></li>
+        <li><a href="#autumn">گالری پاییز</a></li>
+        <li><a href="#nature">گالری طبیعت</a></li>
+      </ul>
+    </nav>
+
+    <!-- =================================================================
+         بخش اول: گل‌ها
+         استفاده از تگ معنایی <section> به همراه id یکتا به جای تگ جدول قدیمی
+         ================================================================= -->
+    <section id="flowers" class="gallery-section">
+      <div class="section-header">
+        <h2>تصاویر گل</h2>
+        <a href="#top" class="back-to-top">↑ بازگشت به بالا</a>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- 
+              تگ <figure>: برای بسته‌بندی مستقل محتوای رسانه‌ای
+              تگ <figcaption>: کپشن و عنوان رسمی عکس برای ربات‌ها و کاربران
+            -->
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/gol/1.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/gol/1.jpg"
+              alt="عکس گل رز سرخ در طبیعت"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۱: رز سرخ</figcaption>
+        </figure>
+
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/gol/2.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/gol/2.jpg"
+              alt="عکس گل لاله بهاری"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۲: لاله بهاری</figcaption>
+        </figure>
+
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/gol/3.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/gol/3.jpg"
+              alt="عکس گل آفتاب‌گردان"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۳: آفتاب‌گردان</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- متن توضیحی مابین بخش‌ها -->
+    <div class="description-box">
+      <p>
+        توضیحات تکمیلی: در طراحی مدرن وب، همواره صفت
+        <code>loading="lazy"</code> را به تصاویری که زیر خط دید (Below the fold)
+        قرار دارند اضافه می‌کنیم تا سرعت بارگذاری صفحه برای کاربر به حداکثر
+        برسد.
+      </p>
+    </div>
+
+    <!-- =================================================================
+         بخش دوم: پاییز
+         ================================================================= -->
+    <section id="autumn" class="gallery-section">
+      <div class="section-header">
+        <h2>تصاویر پاییز</h2>
+        <a href="#top" class="back-to-top">↑ بازگشت به بالا</a>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/paeiz/1.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/paeiz/1.jpg"
+              alt="برگ‌های پاییزی زرد و نارنجی"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۱: برگ‌های طلایی</figcaption>
+        </figure>
+
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/paeiz/2.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/paeiz/2.jpg"
+              alt="جاده جنگلی در مه پاییز"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۲: جاده مه‌آلود</figcaption>
+        </figure>
+
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/paeiz/3.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/paeiz/3.jpg"
+              alt="درختان چنار در فصل خزان"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۳: خزان جنگل</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- =================================================================
+         بخش سوم: طبیعت
+         ================================================================= -->
+    <section id="nature" class="gallery-section">
+      <div class="section-header">
+        <h2>تصاویر طبیعت</h2>
+        <a href="#top" class="back-to-top">↑ بازگشت به بالا</a>
+      </div>
+
+      <div class="gallery-grid">
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/tabiat/1.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/tabiat/1.jpg"
+              alt="نمای کوهستان برفی و دریاچه"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۱: قله برفی</figcaption>
+        </figure>
+
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/tabiat/2.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/tabiat/2.jpg"
+              alt="دشت سرسبز در فصل بهار"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۲: دشت سبز</figcaption>
+        </figure>
+
+        <figure class="image-card">
+          <a href="/HtmlCss1/asser/img/tabiat/3.jpg" target="_blank">
+            <img
+              src="/HtmlCss1/asser/img/tabiat/3.jpg"
+              alt="آبشار خروشان در دل کوهستان"
+              loading="lazy"
+            />
+          </a>
+          <figcaption>عنوان عکس ۳: آبشار کوهستان</figcaption>
+        </figure>
+      </div>
+    </section>
+
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - مدیریت لایه‌ها با z-index</title>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #f8f9fa;
+            padding: 30px;
+            color: #333;
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #7f8c8d;
+        }
+
+        /* کانتینر نگه‌دارنده */
+        .stage {
+            position: relative;
+            width: 450px;
+            height: 350px;
+            border: 2px dashed #b2bec3;
+            border-radius: 12px;
+            background-color: #ffffff;
+            margin-top: 20px;
+        }
+
+        /* استایل مشترک جعبه‌ها */
+        .box {
+            width: 140px;
+            height: 140px;
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .box:hover {
+            transform: scale(1.05); /* هایلایت المان در زمان هاور */
+        }
+
+        /* لایه ۱: قرمز */
+        .box1 {
+            background-color: #e74c3c;
+            top: 30px;
+            right: 30px;
+            z-index: 1; /* پایین‌ترین اولویت */
+        }
+
+        /* لایه ۲: آبی */
+        .box2 {
+            background-color: #3498db;
+            top: 70px;
+            right: 80px;
+            z-index: 2; /* هم‌ارز با باکس ۳ ولی چون قبل‌تر در HTML آمده، زیر آن می‌رود */
+        }
+
+        /* لایه ۳: سبز */
+        .box3 {
+            background-color: #2ecc71;
+            top: 110px;
+            right: 130px;
+            z-index: 2; /* مساوی با باکس ۲، اما چون بعد از آن در HTML آمده رو قرار می‌گیرد */
+        }
+
+        /* لایه ۴: نارنجی / زرد */
+        .box4 {
+            background-color: #f39c12;
+            top: 150px;
+            right: 180px;
+            z-index: 3; /* بالاترین لایه */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>آشنایی با محور عمق (Z-Axis) و خصوصیت z-index</h2>
+    <p>المان با عدد بزرگ‌تر روی المان با عدد کوچک‌تر قرار می‌گیرد. در اعداد مساوی، تقدم با المان بعدی در کدهای HTML است.</p>
+
+    <div class="stage">
+        <div class="box box1">
+            <span>Box 1</span>
+            <small>z-index: 1</small>
+        </div>
+
+        <div class="box box2">
+            <span>Box 2</span>
+            <small>z-index: 2</small>
+        </div>
+
+        <div class="box box3">
+            <span>Box 3</span>
+            <small>z-index: 2</small>
+        </div>
+
+        <div class="box box4">
+            <span>Box 4</span>
+            <small>z-index: 3</small>
+        </div>
+    </div>
+
+</body>
+</html>

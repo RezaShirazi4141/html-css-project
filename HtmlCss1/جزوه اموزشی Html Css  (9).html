@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جزوه آموزشی HTML & CSS - شناسه (id)، کلاس (class) و Emmet</title>
+
+    <style>
+      body {
+        font-family: Tahoma, "Vazirmatn", sans-serif;
+        line-height: 1.8;
+        padding: 30px;
+        background-color: #f8f9fa;
+        color: #2c3e50;
+      }
+
+      /* =================================================================
+           ۱. انتخاب‌گرهای شناسه (ID Selectors) با علامت #
+           نکته: اولویت (Specificity) آی‌دی از کلاس بالاتر است.
+           ================================================================= */
+
+      /* رنگ‌دهی با کلمات کلیدی (Color Keywords) */
+      #paragraph-named {
+        color: crimson;
+        font-weight: bold;
+      }
+
+      /* رنگ‌دهی با مقادیر هگزادسیمال (HEX Code) - #RRGGBB */
+      #paragraph-hex {
+        color: #27ae60; /* سبز زمردی */
+      }
+
+      /* رنگ‌دهی با مدل RGB - rgb(Red, Green, Blue) */
+      #paragraph-rgb {
+        color: rgb(41, 128, 185); /* آبی ملوانی */
+      }
+
+      /* رنگ‌دهی با RGBA (A = Alpha = شفافیت بین 0.0 تا 1.0) */
+      #paragraph-rgba {
+        color: rgba(231, 76, 60, 0.75); /* قرمز با ۲۵٪ شفافیت */
+      }
+
+      /* =================================================================
+           ۲. انتخاب‌گرهای کلاس (Class Selectors) با علامت نقطه (.)
+           یک کلاس را می‌توان به بی‌شمار المان داد.
+           ================================================================= */
+      .card-text {
+        background-color: #ffffff;
+        border-right: 4px solid #3498db;
+        padding: 10px 15px;
+        margin: 8px 0;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+
+      /* ترکیب چند کلاس روی یک المان */
+      .highlight {
+        font-weight: bold;
+        color: #d35400;
+      }
+
+      /* بخش نمایش کدهای Emmet */
+      code {
+        background-color: #e9ecef;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: Consolas, monospace;
+        color: #c7254e;
+        direction: ltr;
+        display: inline-block;
+      }
+
+      table.emmet-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+        background: #fff;
+      }
+
+      table.emmet-table th,
+      table.emmet-table td {
+        border: 1px solid #dee2e6;
+        padding: 10px;
+        text-align: right;
+      }
+
+      table.emmet-table th {
+        background-color: #e2e8f0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>شناسه‌ها (ID) و کلاس‌ها (Class)</h1>
+
+    <!-- بخش شناسه‌ها: هر شناسه منحصر‌به‌فرد است -->
+    <section>
+      <h2>۱. نمونه‌های استفاده از id و سیستم‌های رنگ:</h2>
+      <p id="paragraph-named">این متن با نام رنگ (Crimson) مقداردهی شده است.</p>
+      <p id="paragraph-hex">
+        این متن با کد هگزادسیمال (#27ae60) رنگ‌آمیزی شده است.
+      </p>
+      <p id="paragraph-rgb">این متن با فرمت rgb(41, 128, 185) طراحی شده است.</p>
+      <p id="paragraph-rgba">
+        این متن با فرمت شفاف rgba(231, 76, 60, 0.75) رندر شده است.
+      </p>
+    </section>
+
+    <hr />
+
+    <!-- بخش کلاس‌ها: استفاده مجدد از استایل در المان‌های مختلف -->
+    <section>
+      <h2>۲. نمونه‌های استفاده از class (چندبار مصرف):</h2>
+      <p class="card-text">پاراگراف شماره یک با استایل کلاس یکپارچه</p>
+      <p class="card-text highlight">
+        پاراگراف شماره دو با دو کلاس همزمان (استایل کارتی + برجسته)
+      </p>
+      <p class="card-text">پاراگراف شماره سه با استایل کلاس یکپارچه</p>
+    </section>
+
+    <hr />
+
+    <!-- =================================================================
+         ۳. مرجع دستورات جادویی Emmet در VS Code
+         ================================================================= -->
+    <section>
+      <h2>۳. میانبرهای سریع Emmet (برای افزایش چشمگیر سرعت کدنویسی):</h2>
+      <p>
+        کافیست عبارات زیر را در VS Code تایپ کرده و کلید <code>Tab</code> را
+        فشار دهید:
+      </p>
+
+      <table class="emmet-table">
+        <thead>
+          <tr>
+            <th>فرمول Emmet</th>
+            <th>نتیجه تولیدشده در HTML</th>
+            <th>توضیح عملکرد</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>p.reza*2</code></td>
+            <td>
+              <code
+                >&lt;p class="reza"&gt;&lt;/p&gt;<br />&lt;p
+                class="reza"&gt;&lt;/p&gt;</code
+              >
+            </td>
+            <td>تولید ۲ پاراگراف با کلاس reza</td>
+          </tr>
+          <tr>
+            <td><code>p.reza*2>{www}</code></td>
+            <td>
+              <code
+                >&lt;p class="reza"&gt;www&lt;/p&gt;<br />&lt;p
+                class="reza"&gt;www&lt;/p&gt;</code
+              >
+            </td>
+            <td>افزودن متن ثابت {www} داخل هر پاراگراف</td>
+          </tr>
+          <tr>
+            <td><code>div*3>a{reza}</code></td>
+            <td>
+              <code
+                >&lt;div&gt;&lt;a href=""&gt;reza&lt;/a&gt;&lt;/div&gt; (۳
+                مرتبه)</code
+              >
+            </td>
+            <td>
+              تولید ۳ عدد div که داخل هر کدام یک تگ لینک با متن reza قرار دارد
+            </td>
+          </tr>
+          <tr>
+            <td><code>ul>li*3>a</code></td>
+            <td>یک لیست نامرتب با ۳ آیتم که درون هر کدام یک تگ لینک است</td>
+            <td>سریع‌ترین روش ساخت منوهای ناوبری</td>
+          </tr>
+          <tr>
+            <td><code>#main-box.container</code></td>
+            <td>
+              <code
+                >&lt;div id="main-box" class="container"&gt;&lt;/div&gt;</code
+              >
+            </td>
+            <td>تولید خودکار div با شناسه و کلاس هم‌زمان</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>
+
+

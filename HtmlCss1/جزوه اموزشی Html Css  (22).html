@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - ویژگی Transform</title>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #1e272e;
+            color: #f5f6fa;
+            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            margin-bottom: 30px;
+            color: #00d2d3;
+        }
+
+        /* چیدمان گرید برای نمایش جعبه‌ها */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            width: 100%;
+            max-width: 1000px;
+            /* فعال‌سازی پرسپکتیو سه‌بعدی برای فرزندان */
+            perspective: 1000px;
+        }
+
+        .box {
+            height: 180px;
+            background-color: #ff4757;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            /* ترنزیشن روان */
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background-color 0.4s ease;
+        }
+
+        .box small {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            color: #dcdde1;
+            font-weight: normal;
+        }
+
+        /* ۱. جابجایی (Translate) */
+        .box-translate:hover {
+            background-color: #2ed573;
+            transform: translate(20px, -20px); /* محور X و محور Y */
+        }
+
+        /* ۲. تغییر مقیاس و سایز (Scale) */
+        .box-scale:hover {
+            background-color: #3742fa;
+            transform: scale(1.15); /* بزرگ‌نمایی متناسب ۱۵ درصدی */
+        }
+
+        /* ۳. چرخش در فضای سه‌بعدی (Rotate 3D) */
+        .box-rotate:hover {
+            background-color: #ffa502;
+            transform: rotateY(45deg) rotateX(15deg); /* چرخش حول محور Y و X */
+        }
+
+        /* ۴. کج کردن و اریب‌سازی (Skew) */
+        .box-skew:hover {
+            background-color: #9c88ff;
+            transform: skew(-10deg, 5deg); /* زاویه X و Y */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>آشنایی با توابع کلیدی دستور Transform</h2>
+
+    <div class="container">
+        <div class="box box-translate">
+            <span>Translate</span>
+            <small>جابجایی در صفحه</small>
+        </div>
+
+        <div class="box box-scale">
+            <span>Scale</span>
+            <small>بزرگ‌نمایی / کوچک‌نمایی</small>
+        </div>
+
+        <div class="box box-rotate">
+            <span>Rotate 3D</span>
+            <small>چرخش حول محورها</small>
+        </div>
+
+        <div class="box box-skew">
+            <span>Skew</span>
+            <small>مورب و زاویه‌دار کردن</small>
+        </div>
+    </div>
+
+</body>
+</html>

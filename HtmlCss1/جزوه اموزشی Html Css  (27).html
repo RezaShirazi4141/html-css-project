@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پروژه جامع HTML و CSS</title>
+    <style>
+        /* متغیرهای پروژه */
+        :root {
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-dark: #0f172a;
+            --bg-card: #1e293b;
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --radius: 8px;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.8;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        /* ۱. نوار ناوبری مدرن */
+        .navbar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            background-color: var(--bg-card);
+            padding: 16px;
+            border-radius: var(--radius);
+            align-items: center;
+        }
+
+        .btn {
+            background-color: var(--primary);
+            color: #fff;
+            border: none;
+            padding: 8px 18px;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.2s ease, transform 0.1s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        .select-menu {
+            background-color: #0f172a;
+            color: #fff;
+            border: 1px solid var(--border-color);
+            padding: 8px 12px;
+            border-radius: var(--radius);
+            outline: none;
+        }
+
+        /* ۲. چیدمان ستونی محتوا و آی‌فریم */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 20px;
+        }
+
+        .card h2 {
+            color: #38bdf8;
+            margin-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .card p {
+            margin-bottom: 14px;
+            color: var(--text-muted);
+        }
+
+        .card a.tem {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            margin-left: 6px;
+        }
+
+        .card a.tem:hover {
+            text-decoration: underline;
+        }
+
+        .frame-wrapper iframe {
+            width: 100%;
+            height: 320px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+        }
+
+        /* ۳. فرم استاندارد با CSS Grid */
+        fieldset {
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            padding: 24px;
+            background-color: var(--bg-card);
+        }
+
+        legend {
+            padding: 0 10px;
+            font-weight: bold;
+            color: #38bdf8;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 100px 1fr;
+            gap: 16px;
+            align-items: center;
+            max-width: 450px;
+            margin: 0 auto;
+        }
+
+        .form-grid label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .form-grid input[type="text"],
+        .form-grid input[type="password"],
+        .form-grid input[type="email"] {
+            width: 100%;
+            padding: 8px 12px;
+            background-color: #0f172a;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            color: #fff;
+            outline: none;
+        }
+
+        .form-grid input:focus {
+            border-color: var(--primary);
+        }
+
+        .form-actions {
+            grid-column: span 2;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        /* فوتر و آدرس */
+        footer {
+            text-align: center;
+            padding: 16px;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- منو و ناوبری معنایی -->
+        <nav class="navbar">
+            <button class="btn">منو</button>
+            <button class="btn">تنظیمات</button>
+            <button class="btn">درباره ما</button>
+            
+            <select class="select-menu">
+                <optgroup label="HTML">
+                    <option>تگ‌های پایه</option>
+                    <option>فرم‌ها</option>
+                    <option>جداول</option>
+                </optgroup>
+                <optgroup label="CSS">
+                    <option>سلکتورها</option>
+                    <option>فلکس‌باکس</option>
+                    <option>گرید</option>
+                </optgroup>
+            </select>
+        </nav>
+
+        <!-- بخش محتوا و سایدبار نمایشگر -->
+        <main class="content-grid">
+            <section class="card">
+                <h2>آموزش HTML</h2>
+                <p>
+                    <a href="#" class="tem">مطلب اول:</a>
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. <b>adipisicing</b> فرمول توان: X<sup>2</sup>
+                </p>
+                <p>
+                    <a href="#" class="tem">مطلب دوم:</a>
+                    چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است. <strong>مهم</strong> و نکته برجسته: <mark style="background-color: aqua;">بسیار کاربردی</mark>
+                </p>
+                <p>
+                    <a href="#" class="tem">مطلب سوم:</a>
+                    برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می‌باشد. <i>نکته مورب</i> و اندازه <small>کوچک</small>.
+                </p>
+                <p>
+                    <a href="#" class="tem">مطلب چهارم:</a>
+                    متن آزمایشی جهت بررسی تگ‌های فرمت‌دهی <em>تأکیدی</em> و حذف‌شده مانند <del>قیمت قبلی</del> و فرمول آب: H<sub>2</sub>O
+                </p>
+            </section>
+
+            <!-- بخش آی‌فریم درون سایدبار -->
+            <aside class="frame-wrapper">
+                <iframe src="https://www.digikala.com/" title="سایت نمونه"></iframe>
+            </aside>
+        </main>
+
+        <!-- بخش CSS -->
+        <section class="card">
+            <h2>آموزش CSS</h2>
+            <p><a href="#" class="tem">جلسه ۱:</a> آموزش مدل جعبه‌ای و مدیریت فاصله‌ها.</p>
+            <p><a href="#" class="tem">جلسه ۲:</a> کار با متغیرهای بومی و استایل‌دهی ماژولار.</p>
+        </section>
+
+        <!-- فرم تماس استاندارد -->
+        <section class="form-container">
+            <fieldset>
+                <legend>فرم ثبت‌نام و ارتباط</legend>
+                <form action="#" method="post" class="form-grid">
+                    <label for="username">نام کاربری:</label>
+                    <input type="text" id="username" name="username" maxlength="10" placeholder="نام خود را وارد کنید" required>
+
+                    <label for="password">رمز عبور:</label>
+                    <input type="password" id="password" name="password" maxlength="10" placeholder="رمز عبور" required>
+
+                    <label for="email">ایمیل:</label>
+                    <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+
+                    <div class="form-actions">
+                        <input type="submit" value="ارسال فرم" class="btn">
+                        <input type="reset" value="پاک کردن" class="btn" style="background-color: #64748b;">
+                    </div>
+                </form>
+            </fieldset>
+        </section>
+
+        <!-- فوتر با تگ Address -->
+        <footer>
+            <address>ارتباط با ما: <a href="mailto:reza.shirazi5414@example.com" style="color: #38bdf8;">reza.shirazi5414</a></address>
+        </footer>
+
+    </div>
+
+</body>
+</html>

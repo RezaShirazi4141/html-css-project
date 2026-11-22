@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - متغیرها (CSS Variables)</title>
+
+    <style>
+        /* ۱. متغیرهای سراسری (Global Variables) */
+        :root {
+            --primary-color: #2563eb;
+            --danger-color: #dc2626;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border-radius: 12px;
+            --box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* تم تاریک فرضی (صرفاً با بازنویسی مقادیر متغیرها) */
+        body.dark-mode {
+            --primary-color: #60a5fa;
+            --danger-color: #f87171;
+            --bg-body: #0f172a;
+            --bg-card: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --box-shadow: 0 10px 20px -3px rgba(0, 0, 0, 0.5);
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            padding: 40px 20px;
+            line-height: 1.8;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* کارت نمونه با بهره‌گیری کامل از متغیرها */
+        .card {
+            background-color: var(--bg-card);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        /* استفاده از متغیر به همراه Fallback */
+        .error-message {
+            color: var(--danger-color, red);
+            font-weight: bold;
+            border-right: 4px solid var(--danger-color, red);
+            padding-right: 8px;
+        }
+
+        /* ۲. بازنویسی متغیر در حوزه محلی (Local Scope) */
+        .card.special-box {
+            --border-radius: 2px; /* تغییر گردی فقط برای این باکس خاص */
+            --bg-card: #eef2ff;
+        }
+
+        button.btn-toggle {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- دکمه تست برای روشن و خاموش کردن تم تاریک -->
+        <button class="btn-toggle" onclick="document.body.classList.toggle('dark-mode')">
+            تغییر تم (روشن / تاریک)
+        </button>
+
+        <div class="card">
+            <h3>کارت عمومی پروژه</h3>
+            <p>تمام رنگ‌ها، فاصله‌ها و سایه‌های این باکس مستقیماً از متغیرهای مرکزی خوانده می‌شوند.</p>
+            <p class="error-message">پیام هشدار: عملیات نیازمند تأیید است!</p>
+        </div>
+
+        <div class="card special-box">
+            <h3>کارت با متغیرهای محلی (Local Scope)</h3>
+            <p>در این کارت، متغیر گردی گوشه و رنگ پس‌زمینه صرفاً برای این کارت بازنویسی شده است.</p>
+        </div>
+    </div>
+
+</body>
+</html>

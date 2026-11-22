@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - طراحی واکنش‌گرا با Media Queries</title>
+
+    <style>
+        /* ریست پایه */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #f1f2f6;
+            color: #2f3542;
+            padding: 20px 10px;
+        }
+
+        /* ساختار کلی چیدمان: به جای width ثابت، از max-width استفاده می‌کنیم */
+        #layout {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            border: 2px solid #2ed573;
+            border-radius: 10px;
+            background-color: #ffffff;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* بخش هدر */
+        #header {
+            background-color: #70a1ff;
+            color: white;
+            padding: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* بدنه اصلی - چیدمان دو ستونه دسکتاپ با Flexbox */
+        #body {
+            display: flex;
+            gap: 15px;
+            padding: 15px;
+            min-height: 400px;
+        }
+
+        /* سایدبار در دسکتاپ: ۳۰ درصد */
+        #sidebar {
+            flex: 0 0 30%;
+            background-color: #ffa502;
+            color: white;
+            padding: 20px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* محتوای اصلی در دسکتاپ: ۷۰ درصد باقیمانده */
+        #content {
+            flex: 1;
+            background-color: #eccc68;
+            color: #2f3542;
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        /* فوتر */
+        #footer {
+            background-color: #2f3542;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* =======================================================
+           مدیا کوئری (Media Query) - تغییر چیدمان برای تبلت و موبایل
+           اگر عرض صفحه کمتر از ۶۵۰ پیکسل شد:
+           ======================================================= */
+        @media only screen and (max-width: 650px) {
+            
+            /* ستون‌ها از حالت افقی به حالت عمودی (زیر هم) تغییر می‌کنند */
+            #body {
+                flex-direction: column;
+            }
+
+            /* سایدبار تمام عرض شده یا در صورت نیاز مخفی می‌شود */
+            #sidebar {
+                flex: none;
+                width: 100%;
+                min-height: 100px;
+                /* اگر مایل به حذف سایدبار در موبایل باشید: display: none; */
+            }
+
+            #content {
+                width: 100%;
+            }
+
+            #header {
+                background-color: #ff4757; /* تغییر رنگ برای نمایش تغییر حالت */
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="layout">
+        <div id="header">
+            <h3>سربرگ سایت (Header)</h3>
+            <small>در حالت موبایل رنگ این بخش قرمز می‌شود</small>
+        </div>
+
+        <div id="body">
+            <div id="sidebar">
+                سایدبار (Sidebar - 30%)
+            </div>
+
+            <div id="content">
+                <h4>محتوای اصلی (Content)</h4>
+                <p>در صفحه دسکتاپ این بخش ۷۰٪ عرض را می‌گیرد. برای دیدن واکنش‌گرایی، پنجره مرورگر را کوچک‌تر از ۶۵۰ پیکسل کنید یا حالت Inspect (F12) را باز نمایید.</p>
+            </div>
+        </div>
+
+        <div id="footer">
+            پابرگ سایت (Footer)
+        </div>
+    </div>
+
+</body>
+</html>

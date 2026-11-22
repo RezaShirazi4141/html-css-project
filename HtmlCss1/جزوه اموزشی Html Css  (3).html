@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جزوه آموزشی HTML - ساختار جدول‌ها (Tables)</title>
+
+    <!-- 
+      تگ <style>: برای تعریف کدهای CSS داخلی (Internal CSS) استفاده می‌شود
+      و معمولاً در تگ <head> قرار می‌گیرد.
+    -->
+    <style>
+      table {
+        /* ادغام کادرهای دوتایی به یک کادر واحد و تمیز */
+        border-collapse:collapse;
+        width: 70%;
+        margin: 20px auto;
+        font-family: Tahoma, sans-serif;
+        text-align: center;
+      }
+
+      /* استایل مشترک برای سلول‌های تیتر و عادی */
+      th,
+      td {
+        border: 1px solid #333;
+        padding:10px 15px;
+      }
+
+      /* استایل اختصاصی سربرگ */
+      th {
+        background-color: #2c3e50;
+        color: #f9f9f9;
+      }
+
+      /* رنگ پس‌زمینه ردیف‌های متناوب برای خوانایی بهتر */
+      tbody tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      /* عنوان جدول */
+      caption {
+        font-weight: bold;
+        margin-bottom: 10px;
+        font-size: 1.1rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =================================================================
+         تگ <table>: ایجاد جدول در صفحه وب
+         ساختار استاندارد W3C شامل: caption, thead, tbody, tfoot است.
+         ================================================================= -->
+    <table>
+      <!-- <caption>: برای قرار دادن عنوان یا توضیح کلی جدول -->
+      <caption>
+        جدول نمونه جهت آموزش ادغام سطر و ستون
+      </caption>
+
+      <!-- 
+          <colgroup> و <col>: برای اعمال استایل دسته‌جمعی روی ستون‌ها (اختیاری)
+        -->
+      <colgroup>
+        <col style="background-color: #fcfbfb" />
+        <col />
+      </colgroup>
+
+      <!-- <thead>: بخش هدر یا سربرگ جدول (سطر عناوین ستون‌ها) -->
+      <thead>
+        <tr>
+          <!-- <th> (Table Header): سلول عنوان (متن بولد و وسط‌چین می‌شود) -->
+          <th>ستون الف</th>
+          <th>ستون ب</th>
+        </tr>
+      </thead>
+
+      <!-- <tbody>: بدنه اصلی جدول حاوی داده‌ها -->
+      <tbody>
+        <!-- <tr> (Table Row): ایجاد یک سطر در جدول -->
+        <tr>
+          <!-- 
+                  صفت colspan="2":
+                  ادغام افقی (Column Span) -> این سلول جای ۲ ستون را اشغال می‌کند.
+                -->
+          <td colspan="2">سطر ۱ (ادغام دو ستون - Colspan)</td>
+        </tr>
+
+        <tr>
+          <!-- 
+                  صفت rowspan="2":
+                  ادغام عمودی (Row Span) -> این سلول به اندازه ۲ سطر کشیده می‌شود.
+                -->
+          <td rowspan="2">سطر ۲ و ۳ (ادغام دو سطر - Rowspan)</td>
+          <!-- <td> (Table Data): سلول محتوایی عادی -->
+          <td>سطر ۲ - سلول دوم</td>
+        </tr>
+
+        <tr>
+          <!-- 
+                  ⚠️ دقت شود: چون سلول سمت چپ از سطر قبل با rowspan اشغال شده،
+                  در این سطر فقط ۱ تگ <td> نیاز داریم!
+                -->
+          <td>سطر ۳ - سلول دوم</td>
+        </tr>
+      </tbody>
+
+      <!-- <tfoot>: بخش پاورقی جدول (معمولاً برای جمع مبالغ، آمار کل یا نتیجه‌گیری) -->
+      <tfoot>
+        <tr>
+          <td colspan="2">پاورقی جدول (Footer)</td>
+        </tr>
+      </tfoot>
+    </table>
+  </body>
+</html>

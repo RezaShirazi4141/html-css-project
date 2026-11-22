@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - گرادینت‌ها (Gradients & Overlays)</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #f4f6f9;
+            padding: 20px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h2 {
+            margin: 20px 0 10px;
+            color: #2c3e50;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 5px;
+        }
+
+        /* استایل پایه برای کارت‌های نمایش گرادینت */
+        .gradient-card {
+            height: 110px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        /* ۱. گرادینت خطی چندرنگ با جهت پیش‌فرض (بالا به پایین) */
+        .linear-default {
+            background: linear-gradient(#e74c3c, #3498db, #2ecc71);
+        }
+
+        /* ۲. گرادینت با تعیین جهت به چپ */
+        .linear-direction {
+            background: linear-gradient(to left, #8e44ad, #3498db, #1abc9c);
+        }
+
+        /* ۳. گرادینت با زاویه مشخص و نقاط توقف دقیق (Color Stops) */
+        .linear-angle-stops {
+            /* ۵۰ درصد اول آبی، تا ۸۰ درصد بنفش، تا ۱۰۰ درصد صورتی */
+            background: linear-gradient(135deg, #0984e3 0%, #6c5ce7 60%, #fd79a8 100%);
+        }
+
+        /* ۴. گرادینت خطی تکرارشونده (طرح راه‌راه شیک) */
+        .repeating-linear {
+            background: repeating-linear-gradient(
+                45deg,
+                #2c3e50,
+                #2c3e50 10px,
+                #34495e 10px,
+                #34495e 20px
+            );
+        }
+
+        /* ۵. گرادینت شعاعی (دایره‌ای از مرکز) */
+        .radial-circle {
+            background: radial-gradient(circle at center, #f1c40f 0%, #e67e22 50%, #d35400 100%);
+        }
+
+        /* ۶. گرادینت مخروطی (Conic Gradient - مدرن) */
+        .conic-sample {
+            background: conic-gradient(from 45deg, #e74c3c, #f1c40f, #2ecc71, #3498db, #e74c3c);
+        }
+
+        /* ۷. کاربرد حرفه‌ای در دنیای واقعی: لایه تیره گرادینت روی عکس بنر (Hero Overlay) */
+        .hero-banner {
+            height: 250px;
+            border-radius: 10px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            
+            /* ترکیب گرادینت و عکس پس‌زمینه با تنظیمات صحیح اندازه و جایگیری */
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.4)),
+                        url('https://picsum.photos/1200/600') center / cover no-repeat;
+        }
+
+        .hero-banner h1 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-banner p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>🎨 انواع گرادینت‌های خطی و شعاعی در CSS3</h2>
+
+    <div class="gradient-card linear-default">
+        ۱. خطی پیش‌فرض (to bottom): قرمز ⬅ آبی ⬅ سبز
+    </div>
+
+    <div class="gradient-card linear-direction">
+        ۲. خطی جهت‌دار (to left): بنفش ⬅ آبی ⬅ فیروزه‌ای
+    </div>
+
+    <div class="gradient-card linear-angle-stops">
+        ۳. زاویه ۱۳۵ درجه همراه با درصد توقف رنگ (Color Stops)
+    </div>
+
+    <div class="gradient-card repeating-linear">
+        ۴. گرادینت تکرارشونده (Repeating Linear Gradient - افکت راه‌راه)
+    </div>
+
+    <div class="gradient-card radial-circle">
+        ۵. گرادینت شعاعی دایره‌ای (Radial Gradient Circle)
+    </div>
+
+    <div class="gradient-card conic-sample">
+        ۶. گرادینت مخروطی (Conic Gradient)
+    </div>
+
+    <h2>🌟 کاربرد اصلی در رابط کاربری (تکنیک Hero Section Overlay)</h2>
+    
+    <div class="hero-banner">
+        <h1>بنر اصلی سایت با لایه محافظ متن</h1>
+        <p>استفاده از گرادینت RGBA روی عکس باعث افزایش کنتراست و خوانایی فوق‌العاده متن می‌شود.</p>
+    </div>
+
+</body>
+</html>

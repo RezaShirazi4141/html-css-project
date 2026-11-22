@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - افکت پیشرفته Overlay و Transition</title>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #1a1a2e;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            padding: 20px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            color: #00d2d3;
+        }
+
+        /* ۱. کارت اصلی */
+        .card-box {
+            width: 360px;
+            height: 420px;
+            border-radius: 16px;
+            position: relative;
+            overflow: hidden; /* جلوگیری از بیرون زدن تصویر هنگام زوم */
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+
+        /* لایه تصویر پس‌زمینه با افکت زوم روان */
+        .card-bg {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        /* ۲. لایه گرادینت تاریک‌کننده (Overlay) */
+        .overlay {
+            position: absolute;
+            inset: 0; /* معادل top:0; right:0; bottom:0; left:0; */
+            background: linear-gradient(180deg, rgba(10, 61, 98, 0.4) 0%, rgba(0, 0, 0, 0.85) 100%);
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        /* محتوای متنی وسط کارت */
+        .overlay-content {
+            text-align: center;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 0.6s ease 0.1s;
+        }
+
+        .overlay-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: #ff9f43;
+        }
+
+        .overlay-content p {
+            font-size: 0.9rem;
+            color: #c8d6e5;
+            line-height: 1.6;
+        }
+
+        /* ۳. خطوط گوشه‌ای تزیینی (Corner Borders) */
+        .corner-border {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            border-color: #00d2d3;
+            border-style: solid;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            pointer-events: none; /* تا مانع کلیک نشوند */
+        }
+
+        .corner-top-right {
+            top: 25px;
+            right: 25px;
+            border-width: 3px 3px 0 0; /* فقط بالا و راست */
+            transform: translate(-10px, 10px);
+        }
+
+        .corner-bottom-left {
+            bottom: 25px;
+            left: 25px;
+            border-width: 0 0 3px 3px; /* فقط پایین و چپ */
+            transform: translate(10px, -10px);
+        }
+
+        /* ===================================================
+           حالت هاور (وقتی ماوس روی کارت می‌رود)
+           =================================================== */
+        .card-box:hover .card-bg {
+            transform: scale(1.1); /* زوم تصویر */
+        }
+
+        .card-box:hover .overlay {
+            opacity: 1; /* پدیدار شدن لایه */
+        }
+
+        .card-box:hover .overlay-content {
+            transform: translateY(0); /* بالا آمدن متن */
+            opacity: 1;
+        }
+
+        .card-box:hover .corner-top-right,
+        .card-box:hover .corner-bottom-left {
+            width: calc(100% - 50px);
+            height: calc(100% - 50px);
+            transform: translate(0, 0); /* باز شدن کادر به اندازه کل کارت */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>آموزش ساخت کارت مدرن با Overlay و Transition</h2>
+
+    <div class="card-box">
+        <div class="card-bg"></div>
+        <div class="overlay">
+            <!-- کادرهای گوشه‌ای متحرک -->
+            <div class="corner-border corner-top-right"></div>
+            <div class="corner-border corner-bottom-left"></div>
+
+            <!-- محتوای وسط -->
+            <div class="overlay-content">
+                <h3>طراحی مدرن رابط کاربری</h3>
+                <p>استفاده از ترکیب ترنزیشن، ترنسفورم و گرادینت برای خلق تجربه کاربری جذاب.</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

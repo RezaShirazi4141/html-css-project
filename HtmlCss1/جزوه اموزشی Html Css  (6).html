@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی HTML - فرم‌ها و المان‌های ورودی (Forms)</title>
+    <style>
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #f8f9fa;
+            padding: 30px;
+        }
+
+        fieldset {
+            border: 2px solid #3498db;
+            border-radius: 10px;
+            padding: 25px;
+            max-width: 600px;
+            margin: auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        legend {
+            font-weight: bold;
+            color: #2980b9;
+            padding: 0 7px;
+            font-size: 1.2rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 12px; /* ایجاد فاصله عمودی بین ردیف‌های ورودی */
+        }
+
+        td:first-child {
+            width: 30%;
+            vertical-align: top;
+            font-weight: bold;
+            color: #333;
+            padding-top: 6px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="email"],
+        textarea,
+        select {
+            width: 90%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        input[type="submit"],
+        input[type="reset"] {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor:pointer;
+            font-family: inherit;
+            margin: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        input[type="reset"] {
+            background-color: #e74c3c;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 
+      تگ <form>: کانتینر اصلی فرم برای ارسال داده‌ها به سرور.
+      - action: آدرس URL صفحه یا اندپوینتی در بک‌اند که داده‌ها به آن ارسال می‌شوند.
+      - method: نحوه ارسال (GET برای جستجوها، POST برای اطلاعات حساس و ثبت‌نام).
+      - enctype="multipart/form-data": زمانی که فایلی داخل فرم آپلود می‌شود، این صفت الزامی است!
+    -->
+    <form action="/register/" method="POST" enctype="multipart/form-data">
+
+        <!-- <fieldset>: برای دسته‌بندی و ایجاد یک کادر دور بخش‌های مرتبط یک فرم -->
+        <fieldset>
+            <!-- <legend>: تیتر یا عنوان کادر fieldset -->
+            <legend>فرم ثبت‌نام و پروفایل کاربری</legend>
+
+            <table>
+                <tbody>
+
+                    <!-- ۱. ورودی متن ساده -->
+                    <tr>
+                        <td>
+                            <label for="username">نام کاربری :</label>
+                        </td>
+                        <td>
+                            <!-- 
+                              name: شناسه داده در سرور (مثلاً در جنگو با request.POST['username'] دریافت می‌شود).
+                              placeholder: متن راهنمای محوشونده داخل کادر.
+                              maxlength: حداکثر تعداد کاراکتر مجاز.
+                              required: الزامی کردن پر کردن فیلد قبل از ارسال فرم.
+                            -->
+                            <input type="text" id="username" name="username" maxlength="15" placeholder="حداکثر ۱۵ کاراکتر" required>
+                        </td>
+                    </tr>
+
+                    <!-- ۲. ورودی رمز عبور -->
+                    <tr>
+                        <td>
+                            <label for="password">رمز عبور :</label>
+                        </td>
+                        <td>
+                            <!-- type="password": کاراکترها را به صورت ستاره/نقطه مخفی می‌کند -->
+                            <input type="password" id="password" name="password" maxlength="20" placeholder="رمز عبور خود را وارد کنید" required>
+                        </td>
+                    </tr>
+
+                    <!-- ۳. ورودی ایمیل -->
+                    <tr>
+                        <td>
+                            <label for="email">ایمیل :</label>
+                        </td>
+                        <td>
+                            <!-- type="email": مرورگر وجود علامت @ و دامنه را اعتبارسنجی می‌کند -->
+                            <input type="email" id="email" name="email" placeholder="example@domain.com" required>
+                        </td>
+                    </tr>
+
+                    <!-- ۴. متن چندخطی -->
+                    <tr>
+                        <td>
+                            <label for="address">آدرس سکونت :</label>
+                        </td>
+                        <td>
+                            <!-- <textarea>: برای پیام‌ها و متن‌های طولانی (rows: تعداد سطر، cols: تعداد ستون پیش‌فرض) -->
+                            <textarea id="address" name="address" rows="4" placeholder="آدرس پستی دقیق..."></textarea>
+                        </td>
+                    </tr>
+
+                    <!-- ۵. دکمه‌های رادیویی (انتخاب فقط یک گزینه از بین چندتا) -->
+                    <tr>
+                        <td>جنسیت :</td>
+                        <td>
+                            <!-- نکته طلایی: صفت name برای همه گزینه‌ها یکسان باشد تا فقط یکی انتخاب شود -->
+                            <input type="radio" id="male" name="gender" value="male" checked>
+                            <label for="male">مرد</label>
+
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">زن</label>
+                        </td>
+                    </tr>
+
+                    <!-- ۶. لیست بازشو ساده -->
+                    <tr>
+                        <td>
+                            <label for="city">شهر :</label>
+                        </td>
+                        <td>
+                            <!-- <select>: منوی آبشاری یا کشویی -->
+                            <select id="city" name="city">
+                                <option value="tehran">تهران</option>
+                                <option value="isfahan" selected>اصفهان (پیش‌فرض)</option>
+                                <option value="shiraz">شیراز</option>
+                                <option value="tabriz">تبریز</option>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- ۷. لیست بازشو گروه‌بندی‌شده -->
+                    <tr>
+                        <td>
+                            <label for="province">استان و شهرستان :</label>
+                        </td>
+                        <td>
+                            <!-- <optgroup>: دسته‌بندی منطقی گزینه‌ها در یک منوی طولانی -->
+                            <select id="province" name="province">
+                                <optgroup label="استان اصفهان">
+                                    <option value="isfahan">اصفهان</option>
+                                    <option value="tiran">تیران و کرون</option>
+                                    <option value="kashan">کاشان</option>
+                                </optgroup>
+                                <optgroup label="استان تهران">
+                                    <option value="tehran">تهران</option>
+                                    <option value="rey">شهر ری</option>
+                                </optgroup>
+                            </select>
+                        </td>
+                    </tr>
+
+                    <!-- ۸. چک‌باکس‌ها (امکان انتخاب چند گزینه همزمان) -->
+                    <tr>
+                        <td>علاقه‌مندی‌ها :</td>
+                        <td>
+                            <!-- چک‌باکس‌ها nameهای متمایز یا آرایه‌ای دارند -->
+                            <input type="checkbox" id="music" name="interests" value="music" >
+                            <label for="music">موزیک</label>
+
+                            <input type="checkbox" id="travel" name="interests" value="travel">
+                            <label for="travel">سفر</label>
+
+                            <input type="checkbox" id="sport" name="interests" value="sport" checked>
+                            <label for="sport">ورزش</label>
+                        </td>
+                    </tr>
+
+                    <!-- ۹. آپلود فایل -->
+                    <tr>
+                        <td>
+                            <label for="avatar">تصویر پروفایل :</label>
+                        </td>
+                        <td>
+                            <!-- صفت accept: نوع فایل‌های مجاز (مثلاً فقط تصویر) -->
+                            <input type="file" id="avatar" name="avatar" accept="image/*">
+                        </td>
+                    </tr>
+
+                    <!-- ۱۰. دکمه‌های ارسال و بازنشانی -->
+                    <tr>
+                        <td colspan="2" style="text-align: center; padding-top: 15px;">
+                            <!-- submit: اطلاعات فرم را به آدرس action ارسال می‌کند -->
+                            <input type="submit" value="ثبت اطلاعات">
+                            <!-- reset: تمام فیلدها را به حالت اولیه برمی‌گرداند -->
+                            <input type="reset" value="پاکسازی فرم">
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </fieldset>
+
+    </form>
+
+</body>
+
+</html>

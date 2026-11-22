@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - تسلط بر خاصیت Position و لایه‌بندی</title>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            /* ارتفاع زیاد برای تست اسکرول Fixed و Sticky */
+            height: 250vh;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            color: #2c3e50;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+        }
+
+        /* ۱. Position: Static (پیش‌فرض تمام تگ‌ها) */
+        .box-static {
+            position: static;
+            background-color: #95a5a6;
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            /* مقادیر top/left روی static هیچ اثری ندارند */
+            top: 50px; 
+        }
+
+        /* ۲. Position: Relative (موقعیت نسبی به جایگاه اصلی خود) */
+        .relative-container {
+            border: 2px dashed #bdc3c7;
+            padding: 15px;
+            background: #fafafa;
+        }
+
+        .box-relative {
+            position: relative;
+            top: 20px;
+            right: 30px;
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            box-shadow: 0 4px 10px rgba(52, 152, 219, 0.4);
+        }
+
+        /* ۳. Position: Absolute (وابسته به والدِ غیر Static) */
+        .parent-container {
+            position: relative; /* والد مبنا */
+            height: 220px;
+            background-color: #eef2f7;
+            border: 2px solid #34495e;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+
+        .box-absolute {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 140px;
+            height: 80px;
+            background: linear-gradient(135deg, #e74c3c, #c0392b);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(231, 76, 60, 0.4);
+        }
+
+        /* ۴. Position: Sticky (چسبنده در اسکرول) */
+        .box-sticky {
+            position: sticky;
+            top: 10px; /* وقتی اسکرول به ۱۰ پیکسلی بالا رسید، قفل شو */
+            background: linear-gradient(135deg, #f39c12, #d35400);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            z-index: 100;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+        }
+
+        /* ۵. Position: Fixed (چسبیده به صفحه نمایشگر/Viewport) */
+        .box-fixed {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            width: 180px;
+            padding: 15px;
+            background: linear-gradient(135deg, #27ae60, #2ecc71);
+            color: white;
+            text-align: center;
+            border-radius: 50px;
+            font-weight: bold;
+            box-shadow: 0 6px 15px rgba(39, 174, 96, 0.4);
+            z-index: 999; /* همیشه روی سایر عناصر باشد */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- نوار چسبان Sticky -->
+    <div class="box-sticky">
+        📌 Position: Sticky (با اسکرول صفحه به سمت پایین، به بالای صفحه می‌چسبد)
+    </div>
+
+    <!-- دکمه ثابت Fixed -->
+    <div class="box-fixed">
+        📞 Position: Fixed<br><small>ثابت در گوشه چپ</small>
+    </div>
+
+    <!-- بخش اول: Static -->
+    <div class="section-card">
+        <h2>۱. حالت پیش‌فرض (Static)</h2>
+        <p>در جریان طبیعی صفحه قرار دارد. صفات <code>top</code>، <code>right</code>، <code>bottom</code>، <code>left</code> و <code>z-index</code> روی آن بی‌اثر هستند.</p>
+        <div class="box-static">من Static هستم (دستور top: 50px روی من اثر نکرد)</div>
+    </div>
+
+    <!-- بخش دوم: Relative -->
+    <div class="section-card">
+        <h2>۲. حالت نسبی (Relative)</h2>
+        <p>نسبت به <strong>محل اولیه خودش</strong> جابه‌جا می‌شود. جای خالی اولیه‌اش در صفحه محفوظ می‌ماند.</p>
+        <div class="relative-container">
+            محل اولیه و قالب اصلی
+            <div class="box-relative">من Relative هستم (۲۰px از بالا و ۳۰px از راست فاصله گرفتم)</div>
+        </div>
+    </div>
+
+    <!-- بخش سوم: Absolute داخل Relative -->
+    <div class="section-card">
+        <h2>۳. حالت مطلق (Absolute)</h2>
+        <p>از جریان صفحه خارج می‌شود و نسبت به نزدیک‌ترین والد دارای <code>position: relative</code> موقعیت می‌گیرد.</p>
+        <div class="parent-container">
+            <strong>والد (position: relative)</strong>
+            <div class="box-absolute">Absolute (بالا-چپ)</div>
+        </div>
+    </div>
+
+    <div class="section-card">
+        <h2>توضیح تکمیلی Fixed و Sticky</h2>
+        <p>صفحه را به پایین اسکرول کنید تا عملکرد نشانک سبز (Fixed) و نوار نارنجی (Sticky) را در عمل ببینید.</p>
+    </div>
+
+</body>
+</html>

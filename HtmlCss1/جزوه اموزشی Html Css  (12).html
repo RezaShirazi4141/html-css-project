@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <style>
+        .box {
+            border: 2px solid #3498db;
+            background-color: #ecf0f1;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        /* تفاوت رفتاری */
+        .block-element { display: block; }
+        .inline-element { display: inline; }
+        .inline-block-element { display: inline-block; }
+    </style>
+</head>
+<body>
+
+    <h3>خانواده سوم: Inline-Block</h3>
+    <p>
+        این ویژگی ترکیبی از دو دنیای بالاست. یعنی:
+        <ul>
+            <li>در کنار هم قرار می‌گیرند (مثل Inline).</li>
+            <li>اجازه تعیین عرض (width) و ارتفاع (height) را به ما می‌دهند (مثل Block).</li>
+            <li>مارجین و پدینگِ بالا و پایین را به درستی اعمال می‌کنند و عناصر دیگر را هل می‌دهند.</li>
+        </ul>
+    </p>
+
+    <div class="box inline-block-element" style="width: 150px;">
+        من Inline-Block هستم
+    </div>
+    <div class="box inline-block-element" style="width: 150px;">
+        من هم در کنار او هستم!
+    </div>
+
+</body>
+</html>

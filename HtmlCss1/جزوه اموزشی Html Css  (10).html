@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جزوه آموزشی CSS - مدیریت حرفه‌ای پس‌زمینه (Backgrounds)</title>
+
+    <style>
+      /* =================================================================
+           بررسی تخصصی ویژگی‌های Background در CSS
+           ================================================================= */
+      body {
+        font-family: Tahoma, "Vazirmatn", sans-serif;
+        line-height: 1.9;
+        color: #ecf0f1;
+        padding: 40px 20px;
+        max-width: 850px;
+        margin: auto;
+
+        /* ۱. رنگ پس‌زمینه پیش‌فرض (Fall-back) در صورتی که عکس لود نشود */
+        background-color: #1a1a1a;
+
+        /* ۲. مسیر تصویر پس‌زمینه */
+        background-image: url("/HtmlCss1/asser/img/logo.png");
+
+        /* ۳. کنترل تکرار تصویر: no-repeat (بدون تکرار) | repeat-x | repeat-y | repeat */
+        background-repeat: no-repeat;
+
+        /* ۴. موقعیت قرارگیری تصویر: center (وسط افقی) و center (وسط عمودی) */
+        background-position: center center;
+
+        /* ۵. رفتار تصویر هنگام اسکرول:
+                  - fixed: تصویر در پس‌زمینه قفل می‌شود و متن روی آن اسکرول می‌شود (افکت پارالاکس)
+                  - scroll: حالت عادی (تصویر همراه با متن حرکت می‌کند)
+            */
+        background-attachment: fixed;
+
+        /* ۶. کنترل ابعاد و مقیاس تصویر (بسیار مهم در ریسپانسیو):
+                  - contain: کل عکس را بدون برش داخل کادر جا می‌دهد.
+                  - cover: کادر را کاملاً پر می‌کند (شاید بخش‌هایی از عکس برش بخورد).
+                  - 200px auto: تنظیم دستی طول و عرض.
+            */
+        background-size: 300px auto;
+
+        /* -------------------------------------------------------------
+               نکته فوق‌حرفه‌ای (CSS Shorthand):
+               می‌توان تمام ۶ دستور بالا را در یک خط خلاصه نوشت:
+               background: #1a1a1a url('img/logo.png') no-repeat center center / 300px auto fixed;
+               ------------------------------------------------------------- */
+      }
+
+      /* عنوان اصلی و یکتای صفحه (فقط یک عدد در کل صفحه) */
+      h1.main-title {
+        color: wheat;
+        text-align: center;
+        border-bottom: 2px dashed #f39c12;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+      }
+
+      /* استفاده از تگ استاندارد پاراگراف همراه با حاشیه به جای تگ <br> */
+      p.content-paragraph {
+        background-color: rgba(
+          0,
+          0,
+          0,
+          0.65
+        ); /* پس‌زمینه نیمه‌شفاف برای خوانایی عالی متن روی عکس */
+        padding: 18px 22px;
+        border-radius: 8px;
+        margin-bottom: 25px; /* فاصله تمیز بدون نیاز به <br> */
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        backdrop-filter: blur(4px); /* افکت مات‌کننده شیشه‌ای مدرن (Glassmorphism) */
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- تنها تگ h1 صفحه برای رعایت سئو -->
+    <h1 class="main-title">آموزش ویژگی‌های پس‌زمینه (Background) در CSS</h1>
+
+    <!-- پاراگراف‌های استاندارد به جای تگ‌های نامناسب h1 -->
+    <p class="content-paragraph">
+      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
+      طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان
+      که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با
+      هدف بهبود ابزارهای کاربردی می‌باشد.
+    </p>
+
+    <p class="content-paragraph">
+      با استفاده از ویژگی <code>background-attachment: fixed</code> می‌توان
+      تصویری ثابت در پس‌زمینه قرار داد که با اسکرول کردن کاربر، در جای خود باقی
+      بماند. این تکنیک حسی از عمق دوبعدی به رابط کاربری سایت می‌دهد.
+    </p>
+
+    <p class="content-paragraph">
+      برای ایجاد فاصله مناسب بین پاراگراف‌ها، همواره از خاصیت
+      <code>margin-bottom</code> در CSS استفاده می‌کنیم و از استفاده زنجیره‌ای
+      تگ‌های <code>&lt;br&gt;</code> پرهیز می‌کنیم تا ساختار معنایی HTML تمیز و
+      خوانا باقی بماند.
+    </p>
+
+    <p class="content-paragraph">
+      ویژگی <code>background-size: cover</code> یکی از محبوب‌ترین مقادیر برای
+      تصاویر هدر (Hero Section) در وب‌سایت‌هاست، زیرا تضمین می‌کند که تصویر
+      همواره تمام پهنای پس‌زمینه را پوشش دهد.
+    </p>
+
+    <p class="content-paragraph">
+      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از
+      طراحان گرافیک است. در وب مدرن، جهت تضمین خوانایی متن‌های قرارگرفته روی
+      تصویر پس‌زمینه، متن‌ها درون یک باکس نیمه‌شفاف با فرمت رنگی
+      <code>rgba</code> قرار داده می‌شوند.
+    </p>
+
+    <p class="content-paragraph">
+      پایان بخش آزمایشی برای تست روان بودن و ثابت ماندن پس‌زمینه در حین اسکرول
+      طولانی صفحه.
+    </p>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - سلکتورهای ترکیبی، شبه‌کلاس‌ها و شبه‌عنصرها</title>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #f8f9fa;
+            color: #2d3436;
+            padding: 30px;
+            line-height: 1.8;
+        }
+
+        /* کانتینر نمایشی */
+        .demo-container {
+            border: 2px dashed #0984e3;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            background: #fff;
+        }
+
+        .inner-box {
+            border: 1px solid #fdcb6e;
+            padding: 10px;
+            margin-bottom: 10px;
+            background: #fffdf9;
+        }
+
+        /* ۱. سلکتور نوادگان (فاصله): هر p داخل demo-container */
+        .demo-container p {
+            color: #d63031; /* قرمز برای نوادگان دور */
+        }
+
+        /* ۲. سلکتور فرزند مستقیم (>): فقط p های مستقیم زیرمجموعه demo-container */
+        .demo-container > p {
+            color: #00b894; /* سبز برای فرزندان مستقیم */
+            font-weight: bold;
+        }
+
+        /* ۳. شبه‌عنصرها (Pseudo-elements) */
+        .article-text::first-letter {
+            font-size: 2.2rem;
+            color: #6c5ce7;
+            font-weight: bold;
+            float: right;
+            margin-left: 8px;
+            line-height: 1;
+        }
+
+        .article-text::first-line {
+            color: #0984e3;
+            font-weight: 500;
+        }
+
+        /* ۴. شبه‌کلاس‌ها (Pseudo-classes) */
+        .interactive-box {
+            width: 180px;
+            height: 100px;
+            background-color: #e17055;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            cursor: pointer;
+            /* ترنزیشن برای نرم کردن هاور */
+            transition: all 0.4s ease;
+            margin-bottom: 25px;
+        }
+
+        .interactive-box:hover {
+            background-color: #0984e3;
+            width: 260px;
+            transform: translateY(-4px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        /* حالت‌های مختلف تگ <a> (قانون LoVe/HAte) */
+        .custom-link {
+            display: inline-block;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            background: #dfe6e9;
+            color: #2d3436;
+            transition: 0.2s;
+        }
+
+        .custom-link:hover {
+            background: #b2bec3;
+        }
+
+        .custom-link:visited {
+            color: #6c5ce7; /* رنگ پس از کلیک و باز شدن صفحه */
+        }
+
+        .custom-link:active {
+            color: #fff;
+            background: #d63031; /* رنگ در لحظه فشردن کلیک ماوس */
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>۱. تفاوت فرزند مستقیم (<code>&gt;</code>) و تمام نوادگان (فاصله)</h2>
+    <div class="demo-container">
+        <div class="inner-box">
+            <p>این متن داخل باکس داخلی است (رنگ قرمز - نوه یا نواده دور).</p>
+        </div>
+        <p>این متن مستقیماً فرزند کانتینر اصلی است (رنگ سبز - فرزند مستقیم).</p>
+    </div>
+
+    <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+
+    <h2>۲. شبه‌عنصرها (<code>::first-letter</code> و <code>::first-line</code>)</h2>
+    <p class="article-text">
+        برنامه‌نویسی و طراحی وب استانداردهایی دارد که رعایت آن‌ها کیفیت کار را بالا می‌برد. با استفاده از شبه‌عنصرها می‌توان بدون افزودن تگ اضافه به HTML، حرف اول یا خط اول یک پاراگراف را استایل‌دهی کرد تا ظاهر مقالات مانند مجلات معتبر شود.
+    </p>
+
+    <hr style="margin: 25px 0; border: 0; border-top: 1px solid #ddd;">
+
+    <h2>۳. شبه‌کلاس‌های تعاملی (<code>:hover</code>, <code>:visited</code>, <code>:active</code>)</h2>
+    <div class="interactive-box">ماوس را اینجا بیاورید</div>
+
+    <a href="https://codeyad.com" target="_blank" class="custom-link">مشاهده وب‌سایت کدیاد</a>
+
+</body>
+</html>

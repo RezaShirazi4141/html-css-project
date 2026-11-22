@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>جزوه آموزشی CSS - شبه‌عناصر ::before و ::after در طراحی چت</title>
+
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Tahoma, 'Vazirmatn', sans-serif;
+            background-color: #0f172a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* فریم اصلی صفحه نمایش چت */
+        .chat-app {
+            width: 360px;
+            height: 580px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            border: 2px solid #334155;
+            /* پس‌زمینه همراه با فیلتر لایه تیره */
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+                        url('https://picsum.photos/400/700') center/cover no-repeat;
+        }
+
+        /* هدر بالای چت */
+        .chat-header {
+            background-color: rgba(30, 41, 59, 0.9);
+            color: #f8fafc;
+            padding: 14px 18px;
+            font-size: 0.95rem;
+            font-weight: bold;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+        }
+
+        /* بدنه لیست پیام‌ها */
+        .chat-body {
+            flex: 1;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            overflow-y: auto;
+        }
+
+        /* استایل پایه هر حباب پیام */
+        .chat-bubble {
+            max-width: 75%;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            position: relative;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+        }
+
+        .chat-bubble .time {
+            display: block;
+            font-size: 0.7rem;
+            margin-top: 4px;
+            opacity: 0.75;
+            text-align: left;
+        }
+
+        /* ۱. پیام دریافتی (سمت راست در چینش راست‌به‌چپ) */
+        .incoming {
+            align-self: flex-start;
+            background-color: #334155;
+            color: #f1f5f9;
+            border-radius: 12px 12px 12px 2px; /* گوشه پایین-راست تیز */
+        }
+
+        /* دم مثلثی پیام دریافتی با ::before */
+        .incoming::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: -8px;
+            width: 0;
+            height: 0;
+            border-left: 8px solid #334155;
+            border-top: 8px solid transparent;
+        }
+
+        /* ۲. پیام ارسالی (سمت چپ در چینش راست‌به‌چپ) */
+        .outgoing {
+            align-self: flex-end;
+            background-color: #10b981;
+            color: #ffffff;
+            border-radius: 12px 12px 2px 12px; /* گوشه پایین-چپ تیز */
+        }
+
+        /* دم مثلثی پیام ارسالی با ::after */
+        .outgoing::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: -8px;
+            width: 0;
+            height: 0;
+            border-right: 8px solid #10b981;
+            border-top: 8px solid transparent;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="chat-app">
+        <div class="chat-header">
+            مهندس فرانت‌اند 💻
+        </div>
+
+        <div class="chat-body">
+            <div class="chat-bubble incoming">
+                سلام آقای مهندس! ویژگی جدید رو بررسی کردید؟
+                <span class="time">10:30</span>
+            </div>
+
+            <div class="chat-bubble outgoing">
+                سلام! بله، با شبه‌عناصر `::before` و `::after` کامپوننت پیام‌ها استانداردسازی شد.
+                <span class="time">10:32</span>
+            </div>
+
+            <div class="chat-bubble incoming">
+                عالیه، پرفورمنس انیمیشن‌ها چطوره؟
+                <span class="time">10:33</span>
+            </div>
+
+            <div class="chat-bubble outgoing">
+                کاملاً با شتاب‌دهنده گرافیکی (GPU) رندر می‌شه و هیچ ریفلو (Reflow) اضافی نداریم.
+                <span class="time">10:35</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

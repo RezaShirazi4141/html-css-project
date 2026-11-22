@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap');
+
+:root {
+    --primary-red: #d31919;
+    --primary-glow: rgba(255, 42, 75, 0.5);
+    --bg-dark: #08080a;
+    --text-light: #ffffff;
+    --text-muted: #b0b3b8;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-family: 'Vazirmatn', sans-serif;
+}
+
+html {
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+}
+
+body {
+    width: 100%;
+    min-height: 100vh;
+    background: radial-gradient(circle at 10% 20%, #1a080d 0%, var(--bg-dark) 60%);
+    color: var(--text-light);
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    min-height: 100vh;
+    padding: 6rem 8%;
+    gap: 4rem;
+}
+
+.home-content {
+    flex: 1.2;
+}
+
+.home-content h1 {
+    font-size: 4.8rem;
+    font-weight: 900;
+    line-height: 1.25;
+    margin-bottom: 0.8rem;
+}
+
+span {
+    color: var(--primary-red);
+    text-shadow: 0 0 15px var(--primary-glow);
+}
+
+.home-content h3 {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin-bottom: 1.6rem;
+    color: #e5e7eb;
+}
+
+.home-content p {
+    font-size: 1.6rem;
+    line-height: 1.85;
+    color: var(--text-muted);
+    text-align: justify;
+    max-width: 580px;
+}
+
+.home-icon {
+    display: flex;
+    gap: 1.6rem;
+    margin: 2.5rem 0 3rem;
+}
+
+.home-icon a {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 4.4rem;
+    height: 4.4rem;
+    background-color: rgba(255, 42, 75, 0.05);
+    border: 0.2rem solid var(--primary-red);
+    font-size: 2rem;
+    border-radius: 50%;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    color: var(--primary-red);
+}
+
+.home-icon a:hover {
+    transform: translateY(-5px) scale(1.15);
+    background-color: var(--primary-red);
+    box-shadow: 0 0 20px var(--primary-red);
+    color: #000;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1.2rem 3.4rem;
+    background-color: transparent;
+    border-radius: 4rem;
+    font-size: 1.6rem;
+    color: var(--primary-red);
+    font-weight: 700;
+    border: 0.2rem solid var(--primary-red);
+    box-shadow: 0 0 10px rgba(255, 42, 75, 0.2);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--primary-red);
+    color: #000;
+    box-shadow: 0 0 25px var(--primary-red);
+    transform: translateY(-3px);
+}
+
+.home-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-img img {
+    width: 320px;
+    height: 320px;
+    max-width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--primary-red);
+    box-shadow: 0 0 30px var(--primary-glow);
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.home-img img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 45px var(--primary-red);
+}
+
+@media (max-width: 992px) {
+    html {
+        font-size: 56.25%;
+    }
+
+    .home {
+        flex-direction: column-reverse;
+        justify-content: center;
+        text-align: center;
+        padding: 6rem 5%;
+        gap: 3.5rem;
+    }
+
+    .home-content p {
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .home-icon {
+        justify-content: center;
+    }
+
+    .home-img img {
+        width: 250px;
+        height: 250px;
+    }
+}
+
+@media (max-width: 576px) {
+    html {
+        font-size: 50%;
+    }
+
+    .home {
+        padding: 4rem 1.5rem;
+        gap: 2.5rem;
+    }
+
+    .home-content h1 {
+        font-size: 3.8rem;
+    }
+
+    .home-content h3 {
+        font-size: 2.2rem;
+    }
+
+    .home-img img {
+        width: 190px;
+        height: 190px;
+    }
+
+    .home-icon a {
+        width: 4rem;
+        height: 4rem;
+        font-size: 1.8rem;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 260px;
+        text-align: center;
+    }
+}

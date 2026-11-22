@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Vazirmatn', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: url('../img5/project5.jpg') no-repeat center center/cover;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: #ffffff;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 380px;
+    background: rgba(22, 27, 34, 0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 28px;
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+    overflow: hidden;
+}
+
+.profil-section {
+    padding: 24px 20px 15px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.04);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.avatar-wrapper {
+    position: relative;
+    width: 85px;
+    height: 85px;
+    margin: 0 auto 10px;
+}
+
+.profil-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.username {
+    font-size: 18px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.handle {
+    color: #4da3ff;
+    font-size: 13px;
+    margin: 2px 0 12px;
+    direction: ltr;
+}
+
+.logout {
+    background: rgba(255, 59, 48, 0.15);
+    color: #ff453a;
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.logout:hover {
+    background: #ff453a;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 69, 58, 0.4);
+}
+
+.todo-section {
+    padding: 20px;
+}
+
+.clock-container {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.clock {
+    width: 90px;
+    height: 90px;
+    background: rgba(10, 12, 16, 0.85);
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.8), 0 6px 16px rgba(0, 0, 0, 0.4);
+    position: relative;
+    margin: 0 auto 10px;
+}
+
+.clock-pin {
+    width: 8px;
+    height: 8px;
+    background: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+}
+
+.hand {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform-origin: bottom center;
+    border-radius: 4px;
+}
+
+.hour-hand {
+    width: 3.5px;
+    height: 28px;
+    background: #ffffff;
+    animation: rotate-clock 43200s linear infinite;
+}
+
+.minute-hand {
+    width: 2.5px;
+    height: 36px;
+    background: #a0aec0;
+    animation: rotate-clock 3600s linear infinite;
+}
+
+.second-hand {
+    width: 1.5px;
+    height: 40px;
+    background: #ff3b30;
+    animation: rotate-clock 60s linear infinite;
+}
+
+@keyframes rotate-clock {
+    from {
+        transform: translateX(-50%) rotate(0deg);
+    }
+
+    to {
+        transform: translateX(-50%) rotate(360deg);
+    }
+}
+
+.greeting {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+}
+
+.task-container {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 16px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.task-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.task-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.add-btn {
+    background: #ff3b30;
+    color: #ffffff;
+    width: 28px;
+    height: 28px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 10px rgba(255, 59, 48, 0.35);
+}
+
+.add-btn:hover {
+    transform: scale(1.1);
+    background: #ff5247;
+}
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 180px;
+    overflow-y: auto;
+    padding-left: 4px;
+}
+
+.task-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.task-list::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.task {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.task:hover {
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.task input[type='checkbox'] {
+    display: none;
+}
+
+.checkmark {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ff3b30;
+    border-radius: 6px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s;
+    flex-shrink: 0;
+}
+
+.checkmark::after {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 10px;
+    color: #ffffff;
+    display: none;
+}
+
+.task input:checked~.checkmark {
+    background-color: #ff3b30;
+}
+
+.task input:checked~.checkmark::after {
+    display: block;
+}
+
+.task input:checked~.task-text {
+    text-decoration: line-through;
+    color: rgba(255, 255, 255, 0.4);
+}

@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&family=Vazirmatn:wght@300;400;500;700&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    font-family: 'Vazirmatn', sans-serif;
+    direction: rtl;
+}
+
+body {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow-x: hidden;
+    background:url(../img9/project9.jpg) no-repeat fixed;
+    color: #ffffff;
+    padding: 20px;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.container {
+    width: 100%;
+    max-width: 1050px;
+    min-height: 620px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.left-content {
+    flex: 1.1;
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(145deg, rgba(243, 123, 107, 0.15) 0%, rgba(0, 0, 0, 0.4) 100%);
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.welcome-text h1 {
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.4;
+    color: #ffffff;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    margin-bottom: 15px;
+}
+
+.welcome-text p {
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 35px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    color: #ffffff;
+    font-size: 18px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.social-icons a:hover {
+    background: #f37b6b;
+    color: #ffffff;
+    transform: translateY(-4px);
+    box-shadow: 0 8px 15px rgba(243, 123, 107, 0.35);
+}
+
+.right-content {
+    flex: 1;
+    padding: 50px 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.sign-in-header,
+.sing-in-header {
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 35px;
+    letter-spacing: -0.5px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.88rem;
+    color: #94a3b8;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
+}
+
+.form-group input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 12px 14px 12px 42px;
+    color: #ffffff;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: #f37b6b;
+    box-shadow: 0 0 0 3px rgba(243, 123, 107, 0.15);
+}
+
+
+.form-group i,
+.form-group .fa-solid,
+.form-group .fa-regular,
+.form-group .fa-brands {
+    position: absolute;
+    left: 14px;
+    bottom: 14px;
+    color: #64748b;
+    font-size: 16px;
+    pointer-events: none;
+    transition: color 0.3s ease;
+}
+
+.form-group input:focus~i,
+.form-group input:focus~.fa-solid,
+.form-group input:focus~.fa-regular,
+.form-group input:focus~.fa-brands {
+    color: #f37b6b;
+}
+
+.remember-section,
+.remember-seciton {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    margin: 4px 0 20px 0;
+}
+
+.checkbox-container,
+.checkbox-conatiner {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.checkbox-container input[type="checkbox"],
+.checkbox-conatiner input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #f37b6b;
+}
+
+.checkbox-container label,
+.checkbox-conatiner label {
+    color: #cbd5e1;
+    cursor: pointer;
+    user-select: none;
+}
+
+.forget-password {
+    color: #f37b6b;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+}
+
+.forget-password:hover {
+    color: #f6849d;
+    text-decoration: underline;
+}
+
+.login-button {
+    background: linear-gradient(135deg, #f37b6b 0%, #f6849d 100%);
+    border: none;
+    padding: 13px;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    width: 100%;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(243, 123, 107, 0.3);
+}
+
+.login-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(243, 123, 107, 0.45);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.sign-up,
+.sing-up {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+.sign-up a,
+.sing-up a {
+    color: #f37b6b;
+    text-decoration: none;
+    font-weight: 600;
+    margin-right: 4px;
+    transition: color 0.2s ease;
+}
+
+.sign-up a:hover,
+.sing-up a:hover {
+    color: #f6849d;
+    text-decoration: underline;
+}
+
+@media (max-width: 850px) {
+    .container {
+        flex-direction: column;
+        max-width: 480px;
+        min-height: auto;
+    }
+
+    .left-content {
+        padding: 35px 25px;
+        border-left: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .welcome-text h1 {
+        font-size: 2.1rem;
+    }
+
+    .social-icons {
+        margin-top: 20px;
+    }
+
+    .right-content {
+        padding: 35px 25px;
+    }
+}

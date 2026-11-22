@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ورود به حساب کاربری</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa+Ink:wght@400;700&family=Vazirmatn:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="/HtmlCss2/asser/css/project9.css" />
+  </head>
+  <body>
+    <div class="container">
+
+      <div class="left-content">
+        <div class="welcome-text">
+          <h1>به کانال ما<br />خوش آمدید</h1>
+          <p>برای ورود به حساب کاربری خود اطلاعات را وارد کنید</p>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+          </div>
+        </div>
+      </div>
+
+  
+      <div class="right-content">
+        <div class="sign-in-header">ورود به حساب</div>
+        <form action="">
+          <div class="form-group">
+            <label for="username">نام کاربری</label>
+            <input type="text" id="username" name="username" required />
+            <i class="fa-solid fa-user"></i>
+          </div>
+
+          <div class="form-group">
+            <label for="email">ایمیل</label>
+            <input type="email" id="email" name="email" required />
+            <i class="fa-solid fa-envelope"></i>
+          </div>
+
+          <div class="form-group">
+            <label for="password">رمز عبور</label>
+            <input type="password" id="password" name="password" required />
+            <i class="fa-solid fa-lock"></i>
+          </div>
+
+          <div class="form-group">
+            <label for="confirm-password">تأیید رمز عبور</label>
+            <input type="password" id="confirm-password" name="confirm-password" required />
+            <i class="fa-solid fa-shield-halved"></i>
+          </div>
+
+          <div class="remember-section">
+            <div class="checkbox-container">
+              <input type="checkbox" name="remember" id="remember" />
+              <label for="remember">مرا به خاطر بسپار</label>
+            </div>
+            <a href="#" class="forget-password">فراموشی رمز عبور</a>
+          </div>
+
+          <button type="submit" class="login-button">ورود</button>
+
+          <div class="sign-up">
+            حساب کاربری نداری؟ <a href="#">ثبت نام کنید</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
